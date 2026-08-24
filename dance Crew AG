@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dance Crew AG</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7ff;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #3155d9, #6d3df5);
+      color: white;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      color: white;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.2), transparent 35%),
+        linear-gradient(135deg, #3155d9, #6d3df5);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .small-title {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 9vw, 85px);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: white;
+      color: #3155d9;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 15px;
+      color: #3155d9;
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+      color: #5d6678;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(35, 48, 90, 0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #3155d9;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      background: linear-gradient(135deg, #3155d9, #6d3df5);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    .team-card {
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #3155d9, #6d3df5);
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, #3155d9, #6d3df5);
+      color: white;
+      max-width: none;
+    }
+
+    .contact-inner {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .contact h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      .cards,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 520px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 60px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">Dance Crew AG</div>
+
+      <nav>
+        <a href="#start">Startseite</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#angebot">Angebot</a>
+        <a href="#team">Team</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="start">
+      <div class="hero-content">
+        <div class="small-title">Dance • Team • Leidenschaft</div>
+
+        <h1>Dance Crew AG</h1>
+
+        <p>
+          Gemeinsam tanzen, wachsen und Spaß haben.
+          Wir verbinden Hip-Hop, Freestyle und Streetdance
+          mit Teamgeist und Kreativität.
+        </p>
+
+        <a class="button" href="#ueber-uns">Mehr über uns</a>
+      </div>
+    </section>
+
+
+    <section id="ueber-uns">
+      <h2 class="section-title">Über uns</h2>
+
+      <p class="section-intro">
+        Die Dance Crew AG ist ein Tanzprojekt, bei dem junge Menschen
+        ihre Kreativität entdecken, neue Moves lernen und als Team
+        zusammenwachsen.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">💃</div>
+          <h3>Tanzen</h3>
+          <p>
+            Hip-Hop, Freestyle und Streetdance stehen bei uns im Mittelpunkt.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Teamgeist</h3>
+          <p>
+            Wir unterstützen uns gegenseitig und schaffen eine offene,
+            respektvolle Gemeinschaft.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⭐</div>
+          <h3>Entwicklung</h3>
+          <p>
+            Jede Person kann sich weiterentwickeln, eigene Ideen einbringen
+            und Selbstvertrauen aufbauen.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>15+</strong>
+          Teilnehmende
+        </div>
+
+        <div class="stat">
+          <strong>3</strong>
+          Tanzstile
+        </div>
+
+        <div class="stat">
+          <strong>1</strong>
+          starkes Team
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="angebot">
+      <h2 class="section-title">Unser Angebot</h2>
+
+      <p class="section-intro">
+        Bewegung, Musik und Kreativität – gemeinsam macht Tanzen noch mehr Spaß.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">🔥</div>
+          <h3>Hip-Hop</h3>
+          <p>
+            Energetische Choreografien und moderne Moves.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎵</div>
+          <h3>Freestyle</h3>
+          <p>
+            Musik fühlen, improvisieren und den eigenen Stil entdecken.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Streetdance</h3>
+          <p>
+            Urbaner Tanz mit Power, Ausdruck und Persönlichkeit.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>Workshops & Projekte</h3>
+          <p>
+            Gemeinsame Aktionen und kreative Tanzprojekte.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="team">
+      <h2 class="section-title">Unser Team</h2>
+
+      <p class="section-intro">
+        Hinter der Dance Crew AG steht ein engagiertes Team,
+        das Tanz, Organisation und Kreativität verbindet.
+      </p>
+
+      <div class="cards">
+
+        <div class="card team-card">
+          <div class="team-avatar">J</div>
+          <h3>Jara</h3>
+          <p>Kreative Leitung</p>
+        </div>
+
+        <div class="card team-card">
+          <div class="team-avatar">A</div>
+          <h3>Anna</h3>
+          <p>Unterstützung & Organisation</p>
+        </div>
+
+        <div class="card team-card">
+          <div class="team-avatar">DC</div>
+          <h3>Dance Crew AG</h3>
+          <p>Gemeinsam sind wir ein Team.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="contact" id="kontakt">
+      <div class="contact-inner">
+
+        <h2>Kontakt</h2>
+
+        <p>
+          Du möchtest mehr über die Dance Crew AG erfahren
+          oder bei einem Projekt mitmachen?
+          Wir freuen uns auf deine Nachricht.
+        </p>
+
+        <a class="button" href="mailto:dancecrew@example.com">
+          Kontakt aufnehmen
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 Dance Crew AG · Mit Leidenschaft für Tanz & Teamgeist
+  </footer>
+
+</body>
+</html>
